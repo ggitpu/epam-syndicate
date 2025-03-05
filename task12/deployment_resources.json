@@ -106,7 +106,14 @@
           ],
           "Resource": [
             "arn:aws:s3:::api-ui-hoster/*"
-          ]
+          ],
+          "Condition": {
+            "IpAddress": {
+              "aws:SourceIp": [
+                "18.197.177.98/32"
+              ]
+            }
+          }
         }
       ]
     },
