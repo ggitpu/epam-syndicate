@@ -29,11 +29,14 @@ import java.net.http.HttpResponse;
 	roleName = "api_handler-role",
 	isPublishVersion = true,
 	aliasName = "${lambdas_alias_name}",
-	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED
+	logsExpiration = RetentionSetting.SYNDICATE_ALIASES_SPECIFIED,
+		layers = {"weatherClient"}
 )
 @LambdaLayer(
 		layerName = "weatherClient",
-		libraries = {"lib/OpenMeteoClient.jar", "lib/commons-lang3-3.14.0.jar"}
+		libraries = {"lib/OpenMeteoClient.jar"},
+		runtime = DeploymentRuntime.JAVA11,
+		artifactExtension = ArtifactExtension.ZIP
 )
 @LambdaUrlConfig(
 		authType = AuthType.NONE,
